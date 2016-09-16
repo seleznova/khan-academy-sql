@@ -1,0 +1,66 @@
+/* Create table about the people and what they do here */
+CREATE TABLE people (id INTEGER PRIMARY KEY AUTOINCREMENT, fullname TEXT, country TEXT, age INTEGER);
+
+INSERT INTO people (fullname, country, age) VALUES ("Paulo Coelho", "Brazil", 69);
+
+INSERT INTO people (fullname, country, age) VALUES ("Susanna Moodie", "Canada", 81);
+
+INSERT INTO people (fullname, country, age) VALUES ("Hama Tuma", "Ethiopia", 67);
+
+INSERT INTO people (fullname, country, age) VALUES ("Andrey Kurkov", "Ukraine", 55);
+
+INSERT INTO people (fullname, country, age) VALUES ("Astrid Lindgren", "Sweden", 94);
+
+
+CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, authors_id INTEGER, book TEXT, year INTEGER);
+
+INSERT INTO books (authors_id, book, year) VALUES (1, "Brida", 1990);
+
+INSERT INTO books (authors_id, book, year) VALUES (1, "Adultery", 2016);
+
+INSERT INTO books (authors_id, book, year) VALUES (1, "Like the Flowing River", 2005);
+
+INSERT INTO books (authors_id, book, year) VALUES (1, "Eleven Minutes", 2003);
+
+INSERT INTO books (authors_id, book, year) VALUES (5, "Pippi Longstocking", 1948);
+
+INSERT INTO books (authors_id, book, year) VALUES (5, "Karlsson-on-the-Roof", 1955);
+
+INSERT INTO books (authors_id, book, year) VALUES
+(5, "Emil of Lönneberga", 1963);
+
+INSERT INTO books (authors_id, book, year) VALUES
+(2, "Spartacus", 1822);
+
+INSERT INTO books (authors_id, book, year) VALUES
+(2, "Hugh Latimer ", 1828);
+
+INSERT INTO books (authors_id, book, year) VALUES
+(2, "George Leatrim", 1875);
+
+INSERT INTO books (authors_id, book, year) VALUES (3, "The Homeless Prime Minister", 2014);
+
+INSERT INTO books (authors_id, book, year) VALUES (4, "The Milkman in the Night", 2011);
+
+INSERT INTO books (authors_id, book, year) VALUES (4, "Penguin Lost", 2005);
+
+CREATE TABLE connections (id INTEGER PRIMARY KEY AUTOINCREMENT, author_id INTEGER, book_id INTEGER);
+INSERT INTO connections (author_id, book_id) VALUES (1, 1);
+INSERT INTO connections (author_id, book_id) VALUES (1, 2);
+INSERT INTO connections (author_id, book_id) VALUES (1, 3);
+INSERT INTO connections (author_id, book_id) VALUES (1, 4);
+INSERT INTO connections (author_id, book_id) VALUES (5, 5);
+INSERT INTO connections (author_id, book_id) VALUES (5, 6);
+INSERT INTO connections (author_id, book_id) VALUES (5, 7);
+INSERT INTO connections (author_id, book_id) VALUES (2, 9);
+INSERT INTO connections (author_id, book_id) VALUES (2, 10);
+INSERT INTO connections (author_id, book_id) VALUES (3, 11);
+INSERT INTO connections (author_id, book_id) VALUES (4, 12);
+INSERT INTO connections (author_id, book_id) VALUES (4, 13);
+
+SELECT author.fullname, books.book
+FROM connections
+JOIN people author
+ON connections.author_id = author.id
+JOIN books
+ON connections.book_id = books.id;
